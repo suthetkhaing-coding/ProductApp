@@ -37,5 +37,11 @@ namespace ProductApp.Data
             using var connection = _context.CreateConnection();
             await connection.ExecuteAsync(query, product);
         }
+        public async Task DeleteAsync(Guid id)
+        {
+            var query = "DELETE FROM Product WHERE Id = @Id";
+            using var connection = _context.CreateConnection();
+            await connection.ExecuteAsync(query, new { Id = id });
+        }
     }
 }

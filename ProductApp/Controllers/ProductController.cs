@@ -36,5 +36,13 @@ namespace ProductApp.Controllers
             await _repository.UpdateAsync(product);
             return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> Delete(Guid id) => View(await _repository.GetByIdAsync(id));
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            await _repository.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

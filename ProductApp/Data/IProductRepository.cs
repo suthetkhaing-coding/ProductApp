@@ -8,5 +8,6 @@ namespace ProductApp.Data
         Task<ProductModel> GetByIdAsync(Guid id);
         Task AddAsync(ProductModel product);
         Task UpdateAsync(ProductModel product);
+        Task DeleteAsync(Guid id);
     }
 }
