@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ProductModel>
+
+<h2>Product List</h2>
+<a href="/Product/Create" class="btn btn-primary mb-3">Add New Product</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr><th>Product Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Created Date</th>
+            <th>Modified Date</th>
+            <th>Actions</th>
+        </tr></thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+        foreach (var p in Model)
+        {
+                <tr>
+                    <td>@p.ProductName</td>
+                    <td>@p.Price.ToString("C")</td>
+                    <td>@p.Description</td>
+                    <td>@p.CreatedDate</td>
+                    <td>@p.ModifiedDate</td>
+                    <td>
+                        <a href="/Product/Edit/@p.Id" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="/Product/Delete/@p.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+        }
+        }
+else
+{
+    <tr><td colspan="6">No products found.</td></tr>
+}
+    </tbody>
+</table>
