@@ -7,5 +7,6 @@ namespace ProductApp.Data
         Task<IEnumerable<ProductModel>> GetAllAsync();
         Task<ProductModel> GetByIdAsync(Guid id);
         Task AddAsync(ProductModel product);
+        Task UpdateAsync(ProductModel product);
     }
 }

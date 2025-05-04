@@ -26,5 +26,15 @@ namespace ProductApp.Controllers
             await _repository.AddAsync(product);
             return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> Edit(Guid id) => View(await _repository.GetByIdAsync(id));
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ProductModel product)
+        {
+            if (!ModelState.IsValid) return View(product);
+            product.ModifiedDate = DateTime.Now;
+            await _repository.UpdateAsync(product);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

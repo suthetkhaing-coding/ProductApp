@@ -31,5 +31,11 @@ namespace ProductApp.Data
             using var connection = _context.CreateConnection();
             await connection.ExecuteAsync(query, product);
         }
+        public async Task UpdateAsync(ProductModel product)
+        {
+            var query = "UPDATE Product SET ProductName = @ProductName, Price = @Price, Description = @Description, ModifiedDate = @ModifiedDate WHERE Id = @Id";
+            using var connection = _context.CreateConnection();
+            await connection.ExecuteAsync(query, product);
+        }
     }
 }
